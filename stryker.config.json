@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "This config was generated using 'stryker init'. Please take a look at: https://stryker-mutator.io/docs/stryker-js/configuration/ for more information.",
+  "packageManager": "npm",
+  "reporters": [
+    "html",
+    "clear-text",
+    "progress",
+    "json"
+  ],
+  "testRunner": "mocha",
+  "testRunner_comment": "Take a look at https://stryker-mutator.io/docs/stryker-js/mocha-runner for information about the mocha plugin.",
+  "coverageAnalysis": "perTest",
+  "buildCommand": "npm run build",
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json",
+  "typescriptChecker": {
+    "prioritizePerformanceOverAccuracy": false
+  },
+
+  "mutator": {
+    "excludedMutations": []
+  },
+
+  "ignoreStatic": false,
+
+  "concurrency": 2,
+  "maxTestRunnerReuse": 0,
+  "disableBail": true,
+
+  "timeoutMS": 10000,
+  "timeoutFactor": 2,
+  "dryRunTimeoutMinutes": 10,
+
+  "clearTextReporter": {
+    "allowColor": true,
+    "logTests": true,
+    "reportTests": true,
+    "reportMutants": true,
+    "reportScoreTable": true
+  }
+}

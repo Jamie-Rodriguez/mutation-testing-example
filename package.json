@@ -1,0 +1,37 @@
+{
+  "name": "mutation-testing-example",
+  "version": "1.0.0",
+  "description": "Demonstration of mutation testing and how it can be used to spot gaps in traditional test coverage",
+  "keywords": [
+    "mutation-testing",
+    "testing"
+  ],
+  "license": "BSD-3-Clause",
+  "author": "Jamie Rodriguez",
+  "type": "module",
+  "baseUrl": "./src",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint \"{src,tests}/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}\"",
+    "lint:fix": "eslint \"{src,tests}/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}\" --fix",
+    "test": "mocha --config .mocharc.json",
+    "test:coverage": "odz run npm run test && odz report",
+    "test:mutation": "stryker run"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.37.0",
+    "@stryker-mutator/core": "9.2.0",
+    "@stryker-mutator/mocha-runner": "9.2.0",
+    "@stryker-mutator/typescript-checker": "9.2.0",
+    "@types/chai": "5.2.2",
+    "@types/mocha": "10.0.10",
+    "chai": "6.2.0",
+    "eslint": "9.37.0",
+    "mocha": "11.7.4",
+    "one-double-zero": "1.1.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.1"
+  }
+}
