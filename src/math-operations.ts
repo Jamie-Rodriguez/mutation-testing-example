@@ -10,10 +10,7 @@ export function calculateDiscount(price: number, discountPercent: number): numbe
 }
 
 export function findMax(a: number, b: number): number {
-  if (a > b)
-    return a
-
-  return b
+  return a > b ? a : b
 }
 
 export function fibonacci(n: number): number {
