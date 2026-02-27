@@ -20,18 +20,18 @@
     "test:mutation": "stryker run"
   },
   "devDependencies": {
-    "@eslint/js": "9.37.0",
-    "@stryker-mutator/core": "9.2.0",
-    "@stryker-mutator/mocha-runner": "9.2.0",
-    "@stryker-mutator/typescript-checker": "9.2.0",
-    "@types/chai": "5.2.2",
+    "@eslint/js": "10.0.1",
+    "@stryker-mutator/core": "9.5.1",
+    "@stryker-mutator/mocha-runner": "9.5.1",
+    "@stryker-mutator/typescript-checker": "9.5.1",
+    "@types/chai": "5.2.3",
     "@types/mocha": "10.0.10",
-    "chai": "6.2.0",
-    "eslint": "9.37.0",
-    "mocha": "11.7.4",
+    "chai": "6.2.2",
+    "eslint": "10.0.2",
+    "mocha": "11.7.5",
     "one-double-zero": "1.1.1",
-    "tsx": "4.20.6",
+    "tsx": "4.21.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.1"
+    "typescript-eslint": "8.56.1"
   }
 }

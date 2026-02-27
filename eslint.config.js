@@ -10,7 +10,7 @@ export default defineConfig(
     languageOptions: {
       parserOptions: {
         projectService: true
-      },
+      }
     },
     rules: {
       'semi': ['error', 'never'],
