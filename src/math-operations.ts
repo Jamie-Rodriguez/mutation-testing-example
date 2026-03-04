@@ -2,13 +2,6 @@ export function isPositive(n: number): boolean {
 	return n > 0
 }
 
-export function calculateDiscount(price: number, discountPercent: number): number {
-	if (discountPercent < 0 || discountPercent > 100)
-		throw new Error('Invalid discount percentage')
-
-	return price * (1 - discountPercent / 100)
-}
-
 export function getMax(a: number, b: number): number {
 	return a > b ? a : b
 }
@@ -60,4 +53,11 @@ export function isPrime(n: number): boolean {
 			return false
 
 	return true
+}
+
+export function calculateDiscount(price: number, discountPercent: number): number {
+	if (discountPercent < 0 || discountPercent > 100)
+		throw new Error('Invalid discount percentage')
+
+	return price * (1 - discountPercent / 100)
 }

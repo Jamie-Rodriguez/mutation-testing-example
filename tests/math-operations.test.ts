@@ -15,20 +15,6 @@ describe('Math Operations', () => {
 		// Missing: test for 0 - mutation n > 0 to n >= 0 would pass!
 	})
 
-	describe('calculateDiscount', () => {
-		it('calculates discount correctly', () => {
-			expect(calculateDiscount(100, 20)).to.equal(80)
-		})
-
-		it('throws for invalid discount', () => {
-			expect(() => calculateDiscount(100, -1)).to.throw()
-			expect(() => calculateDiscount(100, 101)).to.throw()
-		})
-
-		// Missing: boundary tests at 0% and 100% discount
-		// Mutation discountPercent > 100 to discountPercent >= 100 would pass!
-	})
-
 	describe('getMax', () => {
 		it('returns larger number', () => {
 			expect(getMax(5, 3)).to.equal(5)
@@ -99,5 +85,19 @@ describe('Math Operations', () => {
 		// Mutation n <= 1 to n < 1 would incorrectly classify 1
 		// Mutation n <= 3 to n < 3 would incorrectly classify 3
 		// Mutation i * i <= n to i * i < n would miss perfect square check
+	})
+
+	describe('calculateDiscount', () => {
+		it('calculates discount correctly', () => {
+			expect(calculateDiscount(100, 20)).to.equal(80)
+		})
+
+		it('throws for invalid discount', () => {
+			expect(() => calculateDiscount(100, -1)).to.throw()
+			expect(() => calculateDiscount(100, 101)).to.throw()
+		})
+
+		// Missing: boundary tests at 0% and 100% discount
+		// Mutation discountPercent > 100 to discountPercent >= 100 would pass!
 	})
 })
