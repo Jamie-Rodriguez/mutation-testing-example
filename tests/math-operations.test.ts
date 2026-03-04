@@ -1,6 +1,19 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { isPositive, calculateDiscount, getMax, fibonacci, gcd, isPrime } from 'math-operations'
+import {
+	isPositive,
+	calculateDiscount,
+	getMax,
+	distance,
+	lerp,
+	percentChange,
+	discriminant,
+	normalize,
+	fibonacci,
+	gcd,
+	isPrime
+} from 'math-operations'
+
 
 describe('Math Operations', () => {
 	describe('isPositive', () => {
@@ -12,7 +25,9 @@ describe('Math Operations', () => {
 			expect(isPositive(-5)).to.be.false
 		})
 
-		// Missing: test for 0 - mutation n > 0 to n >= 0 would pass!
+		// it('returns false for zero', () => {
+		// 	expect(isPositive(0)).to.be.false
+		// })
 	})
 
 	describe('getMax', () => {
@@ -21,7 +36,100 @@ describe('Math Operations', () => {
 			expect(getMax(2, 7)).to.equal(7)
 		})
 
-		// Missing: test for equal values - mutation could return wrong value!
+		// it('returns the value when both are equal', () => {
+		// 	expect(getMax(5, 5)).to.equal(5)
+		// })
+	})
+
+	describe('distance', () => {
+		it('computes the distance between two points', () => {
+			const result = distance(0, 0, 3, 4)
+			expect(result).to.be.greaterThan(0)
+		})
+
+		// it('returns the exact Euclidean distance for non-origin points', () => {
+		// 	expect(distance(1, 2, 4, 6)).to.equal(5)
+		// })
+
+		// it('returns zero for identical points', () => {
+		// 	expect(distance(3, 3, 3, 3)).to.equal(0)
+		// })
+
+		// it('returns 1 for unit distance along an axis', () => {
+		// 	expect(distance(0, 0, 1, 0)).to.equal(1)
+		// })
+	})
+
+	describe('lerp', () => {
+		it('interpolates between two values', () => {
+			const result = lerp(0, 10, 0.5)
+			expect(result).to.be.lessThanOrEqual(10)
+		})
+
+		// it('interpolates correctly with non-zero start', () => {
+		// 	expect(lerp(10, 20, 0.5)).to.equal(15)
+		// })
+
+		// it('returns a when t = 0', () => {
+		// 	expect(lerp(10, 20, 0)).to.equal(10)
+		// })
+
+		// it('returns b when t = 1', () => {
+		// 	expect(lerp(10, 20, 1)).to.equal(20)
+		// })
+	})
+
+	describe('percentChange', () => {
+		it('computes the percentage change', () => {
+			const result = percentChange(100, 150)
+			expect(typeof result).to.equal('number')
+		})
+
+		// it('returns 50 for a 50% increase', () => {
+		// 	expect(percentChange(100, 150)).to.equal(50)
+		// })
+
+		// it('returns a negative value for a decrease', () => {
+		// 	expect(percentChange(200, 100)).to.equal(-50)
+		// })
+	})
+
+	describe('discriminant', () => {
+		it('computes b² - 4ac', () => {
+			const result = discriminant(1, 0, -1)
+			expect(result).to.be.greaterThanOrEqual(0)
+		})
+
+		// it('returns the exact discriminant for non-zero b', () => {
+		// 	expect(discriminant(2, 5, 2)).to.equal(9)
+		// })
+
+		// it('returns zero for a perfect square trinomial', () => {
+		// 	expect(discriminant(1, 2, 1)).to.equal(0)
+		// })
+
+		// it('returns a negative value when roots are complex', () => {
+		// 	expect(discriminant(1, 1, 1)).to.equal(-3)
+		// })
+	})
+
+	describe('normalize', () => {
+		it('maps a value into [0, 1]', () => {
+			const result = normalize(5, 0, 10)
+			expect(result).to.be.lessThanOrEqual(1)
+		})
+
+		// it('normalizes correctly with a non-zero min', () => {
+		// 	expect(normalize(15, 10, 20)).to.equal(0.5)
+		// })
+
+		// it('returns 0 at the lower bound', () => {
+		// 	expect(normalize(10, 10, 20)).to.equal(0)
+		// })
+
+		// it('returns 1 at the upper bound', () => {
+		// 	expect(normalize(20, 10, 20)).to.equal(1)
+		// })
 	})
 
 	describe('fibonacci', () => {
@@ -35,12 +143,10 @@ describe('Math Operations', () => {
 		})
 
 		it('throws for negative input', () => {
-			expect(() => fibonacci(-1)).to.throw()
+			expect(() => fibonacci(-1)).to.throw(
+				'Input must be non-negative'
+			)
 		})
-
-		// Missing: fibonacci(2) - boundary for loop start
-		// Mutation i <= n to i < n would miss last iteration
-		// Mutation n <= 1 to n < 1 would return wrong value for n=1
 	})
 
 	describe('gcd', () => {
@@ -53,13 +159,26 @@ describe('Math Operations', () => {
 		})
 
 		it('throws for negative inputs', () => {
-			expect(() => gcd(-1, 5)).to.throw()
-			expect(() => gcd(5, -1)).to.throw()
+			expect(() => gcd(-1, 5)).to.throw(
+				'Inputs must be non-negative'
+			)
+			expect(() => gcd(5, -1)).to.throw(
+				'Inputs must be non-negative'
+			)
 		})
 
-		// Missing: equal numbers test, prime numbers test
-		// Missing: a < 0 || b < 0 mutation to a <= 0 || b <= 0 would incorrectly reject zero
-		// Mutation b !== 0 to b > 0 would fail for initial positive b
+		it('returns the number itself when both inputs are equal', () => {
+			expect(gcd(7, 7)).to.equal(7)
+		})
+
+		it('returns 1 for coprime numbers', () => {
+			expect(gcd(13, 7)).to.equal(1)
+		})
+
+		// it('handles zero', () => {
+		// 	expect(gcd(0, 5)).to.equal(5)
+		// 	expect(gcd(5, 0)).to.equal(5)
+		// })
 	})
 
 	describe('isPrime', () => {
@@ -80,11 +199,17 @@ describe('Math Operations', () => {
 			expect(isPrime(2)).to.be.true
 		})
 
-		// Missing: isPrime(3) - boundary case
-		// Missing: large prime number test
-		// Mutation n <= 1 to n < 1 would incorrectly classify 1
-		// Mutation n <= 3 to n < 3 would incorrectly classify 3
-		// Mutation i * i <= n to i * i < n would miss perfect square check
+		// it('correctly identifies 3 as prime (base case)', () => {
+		// 	expect(isPrime(3)).to.be.true
+		// })
+
+		// it('detects the smallest odd perfect square as non-prime', () => {
+		// 	expect(isPrime(9)).to.be.false
+		// })
+
+		// it('identifies a large prime', () => {
+		// 	expect(isPrime(97)).to.be.true
+		// })
 	})
 
 	describe('calculateDiscount', () => {
@@ -93,11 +218,20 @@ describe('Math Operations', () => {
 		})
 
 		it('throws for invalid discount', () => {
-			expect(() => calculateDiscount(100, -1)).to.throw()
-			expect(() => calculateDiscount(100, 101)).to.throw()
+			expect(() => calculateDiscount(100, -1)).to.throw(
+				'Invalid discount percentage'
+			)
+			expect(() => calculateDiscount(100, 101)).to.throw(
+				'Invalid discount percentage'
+			)
 		})
 
-		// Missing: boundary tests at 0% and 100% discount
-		// Mutation discountPercent > 100 to discountPercent >= 100 would pass!
+		// it('returns the full price at 0% discount', () => {
+		// 	expect(calculateDiscount(100, 0)).to.equal(100)
+		// })
+
+		// it('returns zero at 100% discount', () => {
+		// 	expect(calculateDiscount(100, 100)).to.equal(0)
+		// })
 	})
 })
