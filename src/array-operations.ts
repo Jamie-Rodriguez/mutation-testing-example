@@ -1,37 +1,5 @@
-export function removeDuplicates(arr: number[]): number[] {
-	const result: number[] = []
-
-	for (const item of arr)
-		if (!result.includes(item))
-			result.push(item)
-
-	return result
-}
-
-export function sumArray(arr: number[]): number {
-	let sum = 0
-
-	for (const num of arr)
-		sum += num
-
-	return sum
-}
-
-export function averageArray(arr: number[]): number {
-	const sum = sumArray(arr)
-
-	return sum / arr.length
-}
-
-export function findIndex(arr: any[], target: any): number {
-	for (let i = 0; i < arr.length; i++)
-		if (arr[i] === target)
-			return i
-
-	return -1
-}
-
-export function arraysEqual(arr1: any[], arr2: any[]): boolean {
+// Returns true if both arrays have the same length and elements in the same order.
+export function arraysEqual<T>(arr1: T[], arr2: T[]): boolean {
 	if (arr1.length !== arr2.length)
 		return false
 
@@ -40,4 +8,20 @@ export function arraysEqual(arr1: any[], arr2: any[]): boolean {
 			return false
 
 	return true
+}
+
+/**
+ * Chunks an array into groups of the given size.
+ * The last chunk may be smaller.
+ */
+export function chunk<T>(arr: T[], size: number): T[][] {
+	if (size <= 0)
+		throw new Error('Chunk size must be positive')
+
+	const result: T[][] = []
+
+	for (let i = 0; i < arr.length; i += size)
+		result.push(arr.slice(i, i + size))
+
+	return result
 }
