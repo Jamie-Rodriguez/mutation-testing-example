@@ -43,8 +43,7 @@ describe('Math Operations', () => {
 
 	describe('distance', () => {
 		it('computes the distance between two points', () => {
-			const result = distance(0, 0, 3, 4)
-			expect(result).to.be.greaterThan(0)
+			expect(distance(0, 0, 3, 4)).to.be.greaterThan(0)
 		})
 
 		// it('returns the exact Euclidean distance for non-origin points', () => {
@@ -62,8 +61,7 @@ describe('Math Operations', () => {
 
 	describe('lerp', () => {
 		it('interpolates between two values', () => {
-			const result = lerp(0, 10, 0.5)
-			expect(result).to.be.lessThanOrEqual(10)
+			expect(lerp(0, 10, 0.5)).to.be.lessThanOrEqual(10)
 		})
 
 		// it('interpolates correctly with non-zero start', () => {
@@ -81,8 +79,7 @@ describe('Math Operations', () => {
 
 	describe('percentChange', () => {
 		it('computes the percentage change', () => {
-			const result = percentChange(100, 150)
-			expect(typeof result).to.equal('number')
+			expect(typeof percentChange(100, 150)).to.equal('number')
 		})
 
 		// it('returns 50 for a 50% increase', () => {
@@ -96,8 +93,7 @@ describe('Math Operations', () => {
 
 	describe('discriminant', () => {
 		it('computes b² - 4ac', () => {
-			const result = discriminant(1, 0, -1)
-			expect(result).to.be.greaterThanOrEqual(0)
+			expect(discriminant(1, 0, -1)).to.be.greaterThanOrEqual(0)
 		})
 
 		// it('returns the exact discriminant for non-zero b', () => {
@@ -115,8 +111,7 @@ describe('Math Operations', () => {
 
 	describe('normalize', () => {
 		it('maps a value into [0, 1]', () => {
-			const result = normalize(5, 0, 10)
-			expect(result).to.be.lessThanOrEqual(1)
+			expect(normalize(5, 0, 10)).to.be.lessThanOrEqual(1)
 		})
 
 		// it('normalizes correctly with a non-zero min', () => {
